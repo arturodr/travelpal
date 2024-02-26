@@ -4,7 +4,8 @@ const divResults = document.getElementById("divResults");
 const txtSearch = document.getElementById("txtSearch");
 let recommendations = [];
 
-function search() {
+function search(event) {
+    event.preventDefault();
     divResults.innerHTML = "";
     const text = txtSearch.value.trim().toLowerCase();
 
@@ -29,7 +30,7 @@ function search() {
                 shuffleArray(recommendations);
                 recommendations.slice(0, 2).forEach((item) => {
                     const result = document.createElement("div");
-                    result.className = "card";
+                    result.className = "card mt-2";
                     result.innerHTML = `
                         <img src="${item.imageUrl}" class="card-img-top" alt="${item.name}">
                         <div class="card-body">
@@ -51,7 +52,8 @@ function search() {
 }
 btnSearch.addEventListener("click", search);
 
-function clear() {
+function clear(event) {
+    event.preventDefault();
     divResults.innerHTML = "";
     txtSearch.value = "";
 }
